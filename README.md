@@ -39,5 +39,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can visit DEMO on:
-todolist-reactjs-nhmt.netlify.app
+You can visit [DEMO](todolist-reactjs-nhmt.netlify.app)
