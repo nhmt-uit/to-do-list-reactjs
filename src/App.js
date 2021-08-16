@@ -9,13 +9,16 @@ class App extends Component {
     items: [],
     id: uuid(),
     item: "",
-    editItem: false
+    editItem: false,
+    taskDone: []
   };
+
   handleChange = e => {
     this.setState({
       item: e.target.value
     });
   };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -33,23 +36,24 @@ class App extends Component {
       editItem: false
     });
   };
+
   clearList = () => {
     this.setState({
-      items: []
+      items: [],
+      taskDone: []
     });
   };
+
   handleDelete = id => {
     const filteredItems = this.state.items.filter(item => item.id !== id);
     this.setState({
       items: filteredItems
     });
   };
+
   handleEdit = id => {
     const filteredItems = this.state.items.filter(item => item.id !== id);
-
     const selectedItem = this.state.items.find(item => item.id === id);
-
-    console.log(selectedItem);
 
     this.setState({
       items: filteredItems,
@@ -58,6 +62,21 @@ class App extends Component {
       id: id
     });
   };
+
+  handleCheckDone = id => {
+    let taskDone = this.state.taskDone.slice();
+    let index = taskDone.indexOf(id);
+
+    if(index > -1){
+      taskDone.splice(index, 1);
+    } else {
+      taskDone.push(id);
+    }
+    this.setState({
+      taskDone: taskDone
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -72,9 +91,11 @@ class App extends Component {
             />
             <TodoList
               items={this.state.items}
+              taskDone={this.state.taskDone}
               clearList={this.clearList}
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
+              handleCheckDone={this.handleCheckDone}
             />
           </div>
         </div>
