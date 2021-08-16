@@ -67,7 +67,7 @@ class App extends Component {
     let taskDone = this.state.taskDone.slice();
     let index = taskDone.indexOf(id);
 
-    if(index > -1){
+    if (index > -1) {
       taskDone.splice(index, 1);
     } else {
       taskDone.push(id);
@@ -81,7 +81,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-10 mx-auto col-md-8 mt-4">
+          <div className="col mx-auto col-md-5 mt-4">
             <h3 className="text-capitalize text-center">todo input</h3>
             <TodoInput
               item={this.state.item}
@@ -89,6 +89,10 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
               editItem={this.state.editItem}
             />
+          </div>
+
+          <div className="col mx-auto col-md-7 mt-4">
+            <h3 className="text-capitalize text-center">todo list</h3>
             <TodoList
               items={this.state.items}
               taskDone={this.state.taskDone}

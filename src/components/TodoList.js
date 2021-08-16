@@ -5,8 +5,7 @@ export default class TodoList extends Component {
     const { items, taskDone, clearList, handleDelete, handleEdit, handleCheckDone } = this.props;
 
     return (
-      <ul className="list-group my-5">
-        <h3 className="text-capitalize text-center">todo list</h3>
+      <ul className="list-group">
         {items.map(item => {
           return (
             <TodoItem
@@ -22,7 +21,7 @@ export default class TodoList extends Component {
 
         <button
           type="button"
-          className="btn btn-danger btn-block text-capitalize mt-5"
+          className="btn btn-danger btn-block text-capitalize mt-2"
           onClick={clearList}
         >
           Clear list
